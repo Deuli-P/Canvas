@@ -2,14 +2,20 @@ import Shape from './Shape.js';
 
 export default class Ball extends Shape {
     #color
+    #dx
+    #dy
 
-    constructor(x, y, radius) {
+    constructor(x, y, radius, dx, dy) {
         super(x,y,radius)
         this.#color = "red";
+        this.#dx = dx
+        this.#dy = dy
     }
 
-    
-
+    get dx() { return this.#dx}
+    set dx(dx) { this.#dx = dx}
+    get dy() { return this.#dy}
+    set dy(dy) { this.#dy = dy}
 
 
     draw(ctx){

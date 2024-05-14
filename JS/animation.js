@@ -1,12 +1,10 @@
 import Ball from './Class/Ball.js'
 
-
 // Canvas, dimension, pos, clear, draw
 
 const canvas = document.getElementById("canvas-animation");
 const ctx = canvas.getContext("2d");
 
-let ball
 
 // dimension du canvas
 const canvasWidth = canvas.width;
@@ -14,36 +12,43 @@ const canvasHeight = canvas.height;
 
 
 
-
-
-let posIntial = {x:canvasWidth/2, y:canvasHeight/2};
-
-let newPos = {x: posIntial.x, y: posIntial.y};
-
-let lastPos = {x: posIntial.x, y: posIntial.y};
-
+let pos = {x:canvasWidth/2, y:canvasHeight/2};
+let lastPos = {x:0, y:0};
 const rayon = 15;
-
-let speed = 2;
+let ball
+const speed = 2;
 
 // creation de la balle
 const createBall = ()=> {
-    ball = new Ball(posIntial.x, posIntial.y,rayon*2);
+    ball = new Ball(pos.x, pos.y,rayon*2, speed, speed);
     ball.draw(ctx);
 }
 
-// Si la position de la balle + radius/ 2 arrive a la limite du canvas alors il repart dans l'autre sens
 
-const limitCanvas = (ball) => {
-    if(ball.x + ball.radius > canvasWidth || ball.x - ball.radius < 0){
-        newPos.x = lastPos.x;
+// Nouvelle position de la balle
+
+
+function newFrame(ball) {
+    // Sauvegarder l'ancienne position
+    lastPos.x = ball.x;
+    lastPos.y = ball.y;
+
+    // Mettre à jour la position de la balle
+    ball.x += speed;
+    ball.y += speed;
+
+    // Vérifier les collisions avec les bords du canvas
+    if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+        if (lastPos.x !== ball.x) {
+            ball.dx *= -1; // Inverser la direction de la balle sur l'axe x
+        }
     }
-    if(ball.y + ball.radius > canvasHeight || ball.y - ball.radius < 0){
-        newPos.y = lastPos.y;
+    if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+        if (lastPos.y !== ball.y) {
+            ball.dy *= -1; // Inverser la direction de la balle sur l'axe y
+        }
     }
 }
-
-
 
 function animate() {
     // Effacer le canvas
@@ -51,26 +56,21 @@ function animate() {
 
     // Mettre à jour la position de la balle
     newFrame(ball);
-
     // Dessiner la balle à sa nouvelle position
-    ball.draw();
-
-    // Demander une nouvelle image
+    createBall();
     requestAnimationFrame(animate);
+    // Demander une nouvelle image
 }
-
-// Lancer l'animation
-animate();
-
 
 // new position pour la balle
 
-
 function init(){
     createBall();
+    animate()
 }
 
 init()
+
 
 
 

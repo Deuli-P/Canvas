@@ -1,0 +1,84 @@
+
+
+
+canvas{
+    border: 2px solid black;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: black;
+    transition: 0.5s;
+}
+
+a:hover{
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+
+/*  DESSIN */
+
+
+.dessin-option-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+
+.color-picker_container{
+
+}
+
+.color-picker{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.black{
+    background-color: black;
+    border-color: yellow;
+}
+
+.aquamarine{
+    background-color: aquamarine;
+}

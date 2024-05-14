@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Draw here</title>
+        <link rel="stylesheet" href="./../CSS/style.css">
+    </head>
+    <body >
+        <main class="dessin-container">
+            <h1>Draw here</h1>
+            <div class="dessin-option-container">
+                <div class="color-picker_container">
+                    <div class="color-picker red" data-color="red"></div>
+                    <div class="color-picker green" data-color="green"></div>
+                    <div class="color-picker yellow" data-color="yellow"></div>
+                    <div class="color-picker blue" data-color="blue"></div>
+                    <div class="color-picker black" data-color="black"></div>
+                    <div class="color-picker aquamarine" data-color="aquamarine"></div>
+                </div>
+                <div class="pencil-radius_clear-button">
+                    <span>Taille du pinceaux: </span>
+                    <input type="range" id="slider-radius" min="5" max="50" value="5">
+                    <button id="clear-canvas">Clear</button>
+                </div>
+            </div>
+            <canvas id="canvas-dessin" width="800" height="640"></canvas>
+        </main>
+    </body>
+    <script src="./../JS/dessin.js" type="module"></script>
+</html>
